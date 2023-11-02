@@ -72,4 +72,20 @@ public interface OrderService {
      * @return
      */
      OrderStatisticsVO statistics();
+
+
+    /**
+     * 接单
+     *
+     * @param ordersConfirmDTO
+     */
+    void confirm(OrdersConfirmDTO ordersConfirmDTO);
+
+
+    /**
+     * 拒单
+     *
+     * @param ordersRejectionDTO
+     */
+    void rejection(OrdersRejectionDTO ordersRejectionDTO) throws Exception;
 }
