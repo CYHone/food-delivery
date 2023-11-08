@@ -53,3 +53,7 @@ sky:
   wechat:
     appid: ${sky.wechat.appid}
     secret: ${sky.wechat.secret}
+  shop:
+    address: 河南省郑州市高新区郑州大学
+  baidu:
+    ak:
