@@ -49,6 +49,7 @@
         where id =#{id}
     </update>
 
+
     <select id="list" parameterType="Setmeal" resultType="Setmeal">
         select * from setmeal
         <where>
@@ -60,6 +61,18 @@
             </if>
             <if test="status != null">
                 and status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from setmeal
+        <where>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
             </if>
         </where>
     </select>
