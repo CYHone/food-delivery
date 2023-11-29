@@ -9,13 +9,13 @@
         <version>2.7.3</version>
     </parent>
     <groupId>com.sky</groupId>
-    <artifactId>sky-take-out</artifactId>
+    <artifactId>fd</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>sky-common</module>
-        <module>sky-pojo</module>
-        <module>sky-server</module>
+        <module>fd-common</module>
+        <module>fd-pojo</module>
+        <module>fd-server</module>
     </modules>
     <properties>
         <mybatis.spring>2.2.0</mybatis.spring>
