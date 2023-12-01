@@ -8,20 +8,20 @@ spring:
     allow-circular-references: true
   datasource:
     druid:
-      driver-class-name: ${sky.datasource.driver-class-name}
-      url: jdbc:mysql://${sky.datasource.host}:${sky.datasource.port}/${sky.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-      username: ${sky.datasource.username}
-      password: ${sky.datasource.password}
+      driver-class-name: ${fd.datasource.driver-class-name}
+      url: jdbc:mysql://${fd.datasource.host}:${fd.datasource.port}/${fd.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${fd.datasource.username}
+      password: ${fd.datasource.password}
   redis:
-    host: ${sky.redis.host}
-    port: ${sky.redis.port}
-    password: ${sky.redis.password}
-    database: ${sky.redis.database}
+    host: ${fd.redis.host}
+    port: ${fd.redis.port}
+    password: ${fd.redis.password}
+    database: ${fd.redis.database}
 
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.sky.entity
+  type-aliases-package: com.fd.entity
   configuration:
     #开启驼峰命名
     map-underscore-to-camel-case: true
@@ -46,13 +46,13 @@ sky:
     user-ttl: 7200000
     user-token-name: authentication
   alioss:
-    endpoint: ${sky.alioss.endpoint}
-    access-key-id: ${sky.alioss.access-key-id}
-    access-key-secret: ${sky.alioss.access-key-secrett}
-    bucket-name: ${sky.alioss.bucket-name}
+    endpoint: ${fd.alioss.endpoint}
+    access-key-id: ${fd.alioss.access-key-id}
+    access-key-secret: ${fd.alioss.access-key-secrett}
+    bucket-name: ${fd.alioss.bucket-name}
   wechat:
-    appid: ${sky.wechat.appid}
-    secret: ${sky.wechat.secret}
+    appid: ${fd.wechat.appid}
+    secret: ${fd.wechat.secret}
   shop:
     address: 河南省郑州市高新区郑州大学
   baidu:
