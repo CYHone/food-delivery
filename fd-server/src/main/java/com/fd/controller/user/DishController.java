@@ -1,6 +1,7 @@
 package com.fd.controller.user;
 
 import com.fd.constant.StatusConstant;
+import com.fd.dto.DishDTO;
 import com.fd.entity.Dish;
 import com.fd.result.Result;
 import com.fd.service.DishService;
@@ -10,10 +11,10 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
+import java.util.Set;
 
 @RestController("userDishController")
 @RequestMapping("/user/dish")
@@ -55,6 +56,33 @@ public class DishController {
         redisTemplate.opsForValue().set(key, list);
 
         return Result.success(list);
+
+    }
+    /**
+     * 清理缓存数据
+     * @param pattern
+     */
+    private void cleanCache(String pattern){
+        Set keys = redisTemplate.keys(pattern);
+        redisTemplate.delete(keys);
+    }
+
+    /**
+     * 修改菜品
+     *
+     * @param dishDTO
+     * @return
+     */
+    @PutMapping
+    @ApiOperation("修改菜品")
+    public Result update(@RequestBody DishDTO dishDTO) {
+        log.info("修改菜品：{}", dishDTO);
+        dishService.updateWithFlavor(dishDTO);
+
+        //将所有的菜品缓存数据清理掉，所有以dish_开头的key
+        cleanCache("dish_*");
+
+        return Result.success();
     }
 
 }
